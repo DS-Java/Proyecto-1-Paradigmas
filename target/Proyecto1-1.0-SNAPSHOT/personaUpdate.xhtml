@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+    <h1>Actualizar Persona</h1>
+
+    <h:form>
+        <p:growl id="msgs" showDetail="true"/>
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel value="Nombre:" for="nombre"/>
+            <p:inputText id="nombre" value="#{personaBean.persona.nombre}"/>
+            <p:outputLabel value="Correo:" for="correo"/>
+            <p:inputText id="correo" value="#{personaBean.persona.correo}"/>
+            <p:outputLabel value="Telefono:" for="telefono"/>
+            <p:inputText id="telefono" value="#{personaBean.persona.telefono}"/>
+            <p:outputLabel value="Centro de Trabajo:" for="centroTrabajo"/>
+            <p:inputText id="centroTrabajo" value="#{personaBean.persona.CENTRO_TRABAJO}"/>
+        </h:panelGrid>
+        <p:commandButton value="Actualizar" id="ajax" update="msgs" action="#{personaBean.update}" style="margin-right:20px;" styleClass="ui-priority-primary">
+            <f:param name="PersonaId" value="#{personaBean.persona.ID_PERSONA}"/><!--Aca se le pase el id para eliminar la persona-->
+        </p:commandButton>
+        <p:linkButton outcome="personaList" value="Lista de personas" style="margin-right:20px;"/>
+
+    </h:form>
+</h:body>
+</html>

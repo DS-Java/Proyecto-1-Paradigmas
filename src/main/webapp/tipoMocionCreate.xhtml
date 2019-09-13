@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+    <h1>Crear Tipo de Mocion </h1>
+
+    <h:form>
+        <p:growl id="msgs" showDetail="true"/>
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel value="Descripcion:" for="descripcion"/>
+            <p:inputText id="descripcion" value="#{tipoMocionBean.tipoMocion.descripcion}"/>
+        </h:panelGrid>
+        <p:commandButton value="Guardar" id="ajax" update="msgs" action="#{tipoMocionBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <p:linkButton outcome="tipoMocionList" value="Lista de tipo de Mociones" style="margin-right:20px;"/>
+    </h:form>
+</h:body>
+</html>
