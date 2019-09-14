@@ -23,8 +23,9 @@ public class MocionBean {
     private List<Mocion> mociones;
 
     @PostConstruct
-    public void init() {
+    public String init() {
         mociones = mocionService.getAllMociones();
+        return "mocionList.xhtml";
     }
 
     public Mocion getMocion() {
@@ -49,8 +50,13 @@ public class MocionBean {
         this.tipoMocion = tipoMocion; }
 
     public void create() {
-        mocionService.createMocion(mocion);
-        mociones = mocionService.getAllMociones();
+        try{
+            mocionService.createMocion(mocion);
+            mociones = mocionService.getAllMociones();
+        }catch (Exception e){
+        } finally {
+            mocion = new Mocion();
+        }
     }
 
     public void delete(){
@@ -60,8 +66,13 @@ public class MocionBean {
     }
 
     public void update(){
-        mocionService.updateMocion(mocion);
-        mociones = mocionService.getAllMociones();
+        try{
+            mocionService.updateMocion(mocion);
+            mociones = mocionService.getAllMociones();
+        }catch (Exception e){
+        } finally {
+            mocion = new Mocion();
+        }
     }
     //@RequestMapping(value = "/personaUpdate.xhtml", method = RequestMethod.GET)
     public String carga(){//Aca se carga la persona y se redirecciona a la ventana update

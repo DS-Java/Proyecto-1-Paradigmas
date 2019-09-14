@@ -7,9 +7,24 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.util.List;
+/*
+import cr.ac.una.entities.Persona;
+import cr.ac.una.services.PersonaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import java.util.List;
+import java.util.Optional;
+*/
 @Component
 @ManagedBean
 public class PersonaBean {
@@ -45,6 +60,7 @@ public class PersonaBean {
     public void create() {
         try{
             personaService.createPersona(persona);
+            addMessage("Aviso", "Registro insertado correctamente.");
             personas = personaService.getAllPersonas();
         }catch (Exception e){
         } finally {
@@ -55,12 +71,14 @@ public class PersonaBean {
     public void delete(){
         Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("PersonaId"));
         personaService.deletePersona(id);
+        addMessage("Aviso", "Registro eliminado correctamente.");
         personas = personaService.getAllPersonas();
     }
 
     public void update(){
         try{
             personaService.updatePersona(persona);
+            addMessage("Aviso", "Registro modificado correctamente.");
             personas = personaService.getAllPersonas();
         }catch (Exception e){
         } finally {
@@ -77,5 +95,10 @@ public class PersonaBean {
     public String vaciar(){//Aca se carga la persona y se redirecciona a la ventana update
         persona=null;
         return "personaCreate.xhtml";
+    }
+
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }

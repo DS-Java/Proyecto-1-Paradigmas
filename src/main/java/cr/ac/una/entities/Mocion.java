@@ -3,6 +3,7 @@ package cr.ac.una.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "Mocion")
@@ -12,9 +13,9 @@ public class Mocion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID_MOCION;
     private int tipo;
-    private String fecha;
+    private Date fecha;
     private String texto;
-    @ManyToOne//Esta es la entidad Hijo de Tipo Mocion
+    @ManyToOne
     @JoinColumn(name = "TIPO_MOCION",nullable = false)//, columnDefinition = "INT"
     private TipoMocion tipoMocion;
 
@@ -34,11 +35,11 @@ public class Mocion implements Serializable {
         this.tipo = tipo;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

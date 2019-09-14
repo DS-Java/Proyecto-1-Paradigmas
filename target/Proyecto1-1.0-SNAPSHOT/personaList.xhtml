@@ -35,11 +35,18 @@
 
             <p:column headerText="Acciones">
 
-                <p:commandButton value="Eliminar" id="eliminar" update="tablaPersona" action="#{personaBean.delete}">
+                <p:commandButton icon="fa fa-fw fa-remove" title="Eliminar" id="eliminar" update="tablaPersona" action="#{personaBean.delete}">
                     <f:param name="PersonaId" value="#{persona.ID_PERSONA}"/><!--Aca se le pase el id para eliminar la persona-->
+                    <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
+                               icon="pi pi-exclamation-triangle"/>
                 </p:commandButton>
 
-                <p:commandButton value="Modificar" id="modificar" update="tablaPersona" action="#{personaBean.carga}">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                </p:confirmDialog>
+
+                <p:commandButton icon="fa fa-fw fa-edit"  title="Modificar" id="modificar" update="tablaPersona" action="#{personaBean.carga}">
                     <f:param name="PersonaId" value="#{persona.ID_PERSONA}"/><!--Aca se le pase el id para eliminar la persona-->
                 </p:commandButton>
             </p:column>

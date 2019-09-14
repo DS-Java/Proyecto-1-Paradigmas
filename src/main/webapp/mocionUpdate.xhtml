@@ -19,11 +19,15 @@
             <p:outputLabel value="Tipo:" for="tipo"/>
             <p:inputText id="tipo" value="#{mocionBean.mocion.tipo}"/>
             <p:outputLabel value="Fecha:" for="fecha"/>
-            <p:inputText id="fecha" value="#{mocionBean.mocion.fecha}"/>
+            <p:calendar id="fecha" value="#{mocionBean.mocion.fecha}" pattern="yyyy-MM-dd"/>
             <p:outputLabel value="Texto:" for="texto"/>
-            <p:inputText id="texto" value="#{mocionBean.mocion.texto}"/>
-            <p:outputLabel value="Tipo de Mocion:" for="tipoMocion"/>
-            <p:inputText id="tipoMocion" value="#{mocionBean.mocion.TIPO_MOCION}"/>
+            <p:inputText id="texto" value="#{mocionBean.mocion.texto}" />
+            <p:outputLabel value="Tipo de Mocion:" />
+            <p:selectOneMenu value="#{mocionBean.mocion.tipoMocion}" converter="tipoMocionConverter">
+                <f:selectItems value="#{tipoMocionBean.tipoMocions}" var="tipoMocion"
+                               itemValue="#{tipoMocion}"
+                               itemLabel="#{tipoMocion.descripcion}"/>
+            </p:selectOneMenu>
         </h:panelGrid>
         <p:commandButton value="Actualizar" id="ajax" update="msgs" action="#{mocionBean.update}" style="margin-right:20px;" styleClass="ui-priority-primary">
             <f:param name="MocionId" value="#{mocionBean.mocion.ID_MOCION}"/><!--Aca se le pase el id para eliminar la persona-->

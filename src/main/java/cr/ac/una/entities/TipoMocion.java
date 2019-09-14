@@ -12,7 +12,6 @@ public class TipoMocion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID_TIPO_MOCION;
     private String descripcion;
-
     @OneToMany(mappedBy = "tipoMocion")
     private Set<Mocion> mociones;
 
@@ -42,6 +41,6 @@ public class TipoMocion implements Serializable {
     @Override
     public String toString() {
         return
-                ""+ ID_TIPO_MOCION;
+                "TIPO MOCION"+ ID_TIPO_MOCION;
     }
 }

@@ -16,8 +16,10 @@
             <p:commandButton value="Control de personas" id="refrescarP" action="#{personaBean.init}">
                 <f:param name="PersonaId" value="#{persona.id}"/><!--Aca se le pase el id para eliminar la persona-->
             </p:commandButton>
-            <p:linkButton outcome="tipoMocionList" value="Control de tipo de Mocion" style="margin:auto;"/>
-            <p:linkButton outcome="mocionList" value="Control de Mocion" style="margin:auto;"/>
+            <p:linkButton outcome="tipoMocionList" value="Control de tipo de Moción" style="margin:auto;"/>
+            <p:commandButton value="Control de Moción" id="refrescarM" action="#{mocionBean.init}">
+                <f:param name="MocionId" value="#{mocion.ID_MOCION}"/><!--Aca se le pase el id para eliminar la persona-->
+            </p:commandButton>
             <p:commandButton value="Auditoria de Transacciones" id="refrescarA" action="#{auditoriaBean.init}">
                 <f:param name="AuditoriaId" value="#{auditoria.id}"/><!--Aca se le pase el id para eliminar la persona-->
             </p:commandButton>
