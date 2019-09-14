@@ -26,6 +26,7 @@ public class TipoMocionConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object tipoMocion) {
+        ((TipoMocion)tipoMocion).getID_TIPO_MOCION();
         return ((TipoMocion)tipoMocion).toString();
     }
 }

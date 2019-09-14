@@ -14,9 +14,8 @@ public class Mocion implements Serializable {
     private int tipo;
     private String fecha;
     private String texto;
-
     @ManyToOne//Esta es la entidad Hijo de Tipo Mocion
-    @JoinColumn(name = "TIPO_MOCION",nullable = false)
+    @JoinColumn(name = "TIPO_MOCION",nullable = false)//, columnDefinition = "INT"
     private TipoMocion tipoMocion;
 
     public int getID_MOCION() {

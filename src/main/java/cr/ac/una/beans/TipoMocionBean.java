@@ -52,9 +52,14 @@ public class TipoMocionBean {
     }
 
     public void create() {
-        //tipoMocion=null;
-        tipoMocionService.createTipoMocion(tipoMocion);
-        tipoMocions = tipoMocionService.getAllTipoMocion();
+        try {
+            tipoMocionService.createTipoMocion(tipoMocion);
+            tipoMocions = tipoMocionService.getAllTipoMocion();
+        }catch (Exception e){
+        }finally {
+            tipoMocion = new TipoMocion();
+        }
+
     }
 
     public void delete(){
@@ -64,8 +69,13 @@ public class TipoMocionBean {
     }
 
     public void update(){
-        tipoMocionService.updateTipoMocion(tipoMocion);
-        tipoMocions = tipoMocionService.getAllTipoMocion();
+        try{
+            tipoMocionService.updateTipoMocion(tipoMocion);
+            tipoMocions = tipoMocionService.getAllTipoMocion();
+        }catch (Exception e){
+        }finally {
+            tipoMocion = new TipoMocion();
+        }
     }
     //@RequestMapping(value = "/personaUpdate.xhtml", method = RequestMethod.GET)
     public String carga(){//Aca se carga la persona y se redirecciona a la ventana update

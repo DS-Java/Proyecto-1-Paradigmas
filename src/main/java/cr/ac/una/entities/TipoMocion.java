@@ -41,8 +41,7 @@ public class TipoMocion implements Serializable {
 
     @Override
     public String toString() {
-        return "TipoMocion{" +
-                "ID_TIPO_MOCION=" + ID_TIPO_MOCION +
-                ", descripcion='" + descripcion + '\''+ '}';
+        return
+                ""+ ID_TIPO_MOCION;
     }
 }

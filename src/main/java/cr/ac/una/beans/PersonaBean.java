@@ -20,8 +20,9 @@ public class PersonaBean {
     private List<Persona> personas;
 
     @PostConstruct
-    public void init() {
+    public String init() {
         personas = personaService.getAllPersonas();
+        return "personaList.xhtml";
 
     }
 
@@ -42,8 +43,13 @@ public class PersonaBean {
     }
 
     public void create() {
-        personaService.createPersona(persona);
-        personas = personaService.getAllPersonas();
+        try{
+            personaService.createPersona(persona);
+            personas = personaService.getAllPersonas();
+        }catch (Exception e){
+        } finally {
+            persona = new Persona();
+        }
     }
 
     public void delete(){
@@ -53,8 +59,13 @@ public class PersonaBean {
     }
 
     public void update(){
-        personaService.updatePersona(persona);
-        personas = personaService.getAllPersonas();
+        try{
+            personaService.updatePersona(persona);
+            personas = personaService.getAllPersonas();
+        }catch (Exception e){
+        } finally {
+            persona = new Persona();
+        }
     }
     //@RequestMapping(value = "/personaUpdate.xhtml", method = RequestMethod.GET)
     public String carga(){//Aca se carga la persona y se redirecciona a la ventana update

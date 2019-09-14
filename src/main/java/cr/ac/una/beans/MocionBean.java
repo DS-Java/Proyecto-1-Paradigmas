@@ -49,7 +49,6 @@ public class MocionBean {
         this.tipoMocion = tipoMocion; }
 
     public void create() {
-        //mocion.setTipoMocion(tipoMocion);
         mocionService.createMocion(mocion);
         mociones = mocionService.getAllMociones();
     }

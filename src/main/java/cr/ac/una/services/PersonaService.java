@@ -3,11 +3,13 @@ package cr.ac.una.services;
 import cr.ac.una.entities.Persona;
 import cr.ac.una.repositories.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 @Service
 public class PersonaService {
 
