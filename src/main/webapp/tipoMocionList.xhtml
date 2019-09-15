@@ -23,11 +23,18 @@
 
             <p:column headerText="Acciones">
 
-                <p:commandButton value="Eliminar" id="eliminar" update="tablaTipoMocion" action="#{tipoMocionBean.delete}">
+                <p:commandButton icon="fa fa-fw fa-remove" value="Eliminar" id="eliminar" update="tablaTipoMocion" action="#{tipoMocionBean.delete}">
                     <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/><!--Aca se le pase el id para eliminar la persona-->
+                    <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
+                    icon="pi pi-exclamation-triangle"/>
                 </p:commandButton>
 
-                <p:commandButton value="Modificar" id="modificar" update="tablaTipoMocion" action="#{tipoMocionBean.carga}">
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                </p:confirmDialog>
+
+                <p:commandButton icon="fa fa-fw fa-edit"  value="Modificar" id="modificar" update="tablaTipoMocion" action="#{tipoMocionBean.carga}">
                     <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/><!--Aca se le pase el id para eliminar la persona-->
                 </p:commandButton>
             </p:column>

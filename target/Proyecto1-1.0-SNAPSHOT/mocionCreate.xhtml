@@ -16,13 +16,13 @@
         <p:growl id="msgs" showDetail="true"/>
 
         <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel value="Tipo:" for="tipo"/>
-            <p:inputText id="tipo" value="#{mocionBean.mocion.tipo}"/>
-            <p:outputLabel value="Fecha:" for="fecha"/>
+            <p:outputLabel value="Tipo:" indicateRequired="true" for="tipo"/>
+            <p:inputText id="tipo" required="true" requiredMessage="Ingrese un tipo" value="#{mocionBean.mocion.tipo}"/>
+            <p:outputLabel value="Fecha:" indicateRequired="true" for="fecha"/>
             <p:calendar id="fecha" value="#{mocionBean.mocion.fecha}" pattern="yyyy-MM-dd"/>
-            <p:outputLabel value="Texto:" for="texto"/>
-            <p:inputText id="texto" value="#{mocionBean.mocion.texto}" />
-            <p:outputLabel value="Tipo de Mocion:" />
+            <p:outputLabel value="Texto:" indicateRequired="true" for="texto"/>
+            <p:inputText id="texto" required="true" requiredMessage="Ingrese un texto" value="#{mocionBean.mocion.texto}" />
+            <p:outputLabel  value="Tipo de Mocion:" />
             <p:selectOneMenu value="#{mocionBean.mocion.tipoMocion}" converter="tipoMocionConverter">
                 <f:selectItems value="#{tipoMocionBean.tipoMocions}" var="tipoMocion"
                                itemValue="#{tipoMocion}"

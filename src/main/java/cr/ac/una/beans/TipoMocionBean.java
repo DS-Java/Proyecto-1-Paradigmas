@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class TipoMocionBean {
     public void create() {
         try {
             tipoMocionService.createTipoMocion(tipoMocion);
+            addMessage("Aviso", "Registro insertado correctamente.");
             tipoMocions = tipoMocionService.getAllTipoMocion();
         }catch (Exception e){
         }finally {
@@ -65,12 +67,14 @@ public class TipoMocionBean {
     public void delete(){
         Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
         tipoMocionService.deleteTipoMocion(id);
+        addMessage("Aviso", "Registro eliminado correctamente.");
         tipoMocions = tipoMocionService.getAllTipoMocion();
     }
 
     public void update(){
         try{
             tipoMocionService.updateTipoMocion(tipoMocion);
+            addMessage("Aviso", "Registro modificado correctamente.");
             tipoMocions = tipoMocionService.getAllTipoMocion();
         }catch (Exception e){
         }finally {
@@ -87,5 +91,10 @@ public class TipoMocionBean {
     public String vaciar(){//Aca se carga la persona y se redirecciona a la ventana update
         tipoMocion=null;
         return "personaCreate.xhtml";
+    }
+
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }

@@ -1,11 +1,9 @@
 package cr.ac.una.converters;
 
-import cr.ac.una.beans.MocionBean;
+
 import cr.ac.una.beans.TipoMocionBean;
 import cr.ac.una.entities.TipoMocion;
-import cr.ac.una.services.MocionService;
 import cr.ac.una.services.TipoMocionService;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.el.ValueExpression;

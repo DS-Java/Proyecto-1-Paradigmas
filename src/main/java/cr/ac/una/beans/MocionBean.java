@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class MocionBean {
     public void create() {
         try{
             mocionService.createMocion(mocion);
+            addMessage("Aviso", "Registro insertado correctamente.");
             mociones = mocionService.getAllMociones();
         }catch (Exception e){
         } finally {
@@ -62,12 +64,14 @@ public class MocionBean {
     public void delete(){
         Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("MocionId"));
         mocionService.deleteMocion(id);
+        addMessage("Aviso", "Registro eliminado correctamente.");
         mociones = mocionService.getAllMociones();
     }
 
     public void update(){
         try{
             mocionService.updateMocion(mocion);
+            addMessage("Aviso", "Registro modificado correctamente.");
             mociones = mocionService.getAllMociones();
         }catch (Exception e){
         } finally {
@@ -84,5 +88,10 @@ public class MocionBean {
     public String vaciar(){//Aca se carga la persona y se redirecciona a la ventana update
         mocion=null;
         return "mocionCreate.xhtml";
+    }
+
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }
