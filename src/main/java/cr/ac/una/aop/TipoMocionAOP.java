@@ -1,5 +1,6 @@
 package cr.ac.una.aop;
 
+
 import cr.ac.una.entities.Auditoria;
 import cr.ac.una.services.AuditoriaService;
 import org.aspectj.lang.JoinPoint;
@@ -8,61 +9,54 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Aspect
-public class MocionAOP {
+public class TipoMocionAOP {
     @Autowired
     AuditoriaService auditoriaService;
 
-    ///PRUEBA DIEGOOOOOOOOOOOO
-
-
     //ASPECTO DESPUES DE CREAR
-    @After("execution(* cr.ac.una.services.MocionService.createMocion(..))")
-    public void auditoriaDespuesAgregarPersonas(JoinPoint joinPoint){//Funcion para loguear antes de algo
-        //Aca creo el objeto Auditoria y lo lleno
+    @After("execution(* cr.ac.una.services.TipoMocionService.createTipoMocion(..))")
+    public  void auditoriaDespuesAgregarTipoMocion(JoinPoint joinPoint){
+        //Lleno el objeto auditoria
         Auditoria a = new Auditoria();
         a.setTransaccion("Agregado");
-        a.setTabla("MOCION");
+        a.setTabla("TIPO MOCION");
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE AGREGAR");
     }
-
     //ASPECTO DESPUES DE LISTAR
-    @After("execution(* cr.ac.una.services.MocionService.getAllMociones(..))")
+    @After("execution(* cr.ac.una.services.TipoMocionService.getAllTipoMocion(..))")
     public void auditoriaDespuesListarPersonas(JoinPoint joinPoint){
         Auditoria a = new Auditoria();
         a.setTransaccion("Listado");
-        a.setTabla("MOCION");
+        a.setTabla("TIPO MOCION");
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE LISTAR");
     }
 
+
+
     //ASPECTO DESPUES DE ELIMINAR
-    @After("execution(* cr.ac.una.services.MocionService.deleteMocion(..))")
-    public void auditoriaDespuesEliminarPersona(JoinPoint joinPoint){
+    @After("execution(* cr.ac.una.services.TipoMocionService.deleteTipoMocion(..))")
+    public void auditoriaDespuesEliminarTipoMocion(JoinPoint joinPoint){
         Auditoria a = new Auditoria();
         a.setTransaccion("Eliminado");
-        a.setTabla("MOCION");
+        a.setTabla("TIPO MOCION");
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE ELIMINAR");
     }
 
-
     //ASPECTO DESPUES DE ACTUALIZAR
-    @After("execution(* cr.ac.una.services.MocionService.updateMocion(..))")
+    @After("execution(* cr.ac.una.services.TipoMocionService.updateTipoMocion(..))")
     public void auditoriaDespuesActualizarPersona(JoinPoint joinPoint){
         Auditoria a = new Auditoria();
         a.setTransaccion("Actualizado");
-        a.setTabla("MOCION");
+        a.setTabla("TIPO MOCION");
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE ACTUALIZAR");
-        System.out.println("diegooo");
     }
-
-
-    ///PRUEBA DIEGOOOOOOOOOOOO
 
 }
