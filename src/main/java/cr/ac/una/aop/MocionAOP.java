@@ -25,6 +25,7 @@ public class MocionAOP {
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE AGREGAR");
+        System.out.println("diegoooo");
     }
 
     //ASPECTO DESPUES DE LISTAR
