@@ -1,4 +1,4 @@
-package cr.ac.una.beans;
+package cr.ac.una.entities;
 
 public class PersonaMocion {
 }
