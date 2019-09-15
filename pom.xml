@@ -90,6 +90,11 @@
             <version>1.9.4</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>3.2.1.RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.4</version>
@@ -179,5 +184,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
 
 </project>

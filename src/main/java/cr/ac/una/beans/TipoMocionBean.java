@@ -41,7 +41,7 @@ public class TipoMocionBean {
     public TipoMocion obtieneTipoMocion(Integer id)
     {
         if(id == null){
-            throw new IllegalArgumentException("no se proveyo el id");
+            throw new IllegalArgumentException("no se provee el id");
         }
         for (TipoMocion tm : tipoMocions){
             if(id.equals(tm.getID_TIPO_MOCION())){

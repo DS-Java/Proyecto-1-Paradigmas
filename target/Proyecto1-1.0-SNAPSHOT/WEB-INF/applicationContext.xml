@@ -59,5 +59,14 @@
         <context:component-scan base-package="cr.ac.una.aop"/><!--Aca indico el paquete donde estaran los componentes-->
         <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
         <bean id="personaAOP" class="cr.ac.una.aop.PersonaAOP"></bean><!--Aca se indica que PersonaAOP se va comportar como un bean-->
+
+
+        <bean id="tipoMocionAOP" class="cr.ac.una.aop.TipoMocionAOP"/>
+        <bean id="mocionAOP" class="cr.ac.una.aop.MocionAOP"/>
+
+
     </beans>
+
+
+
 </beans>
