@@ -1,6 +1,8 @@
 package cr.ac.una.beans;
 
+import cr.ac.una.entities.Mocion;
 import cr.ac.una.entities.TipoMocion;
+import cr.ac.una.services.MocionService;
 import cr.ac.una.services.TipoMocionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,9 @@ import java.util.List;
 public class TipoMocionBean {
     @Autowired
     TipoMocionService tipoMocionService;
+
+    @Autowired
+    MocionService mocionService;
 
     private TipoMocion tipoMocion = new TipoMocion();
     private List<TipoMocion> tipoMocions;
@@ -61,10 +66,22 @@ public class TipoMocionBean {
         }finally {
             tipoMocion = new TipoMocion();
         }
-
     }
 
     public void delete(){
+        /*List<Mocion> mociones = mocionService.getAllMociones();//Se carga esta lista con todas la mociones que hay en la base
+        Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
+        //Se consulta el id del tipo de mocion a eliminar
+        for (Mocion m : mociones){//For que recorre toda la lista
+            if(id==(m.getTipoMocion().getID_TIPO_MOCION())){//If que valida si se encuentra el id tipo mocion en alguna mocion de la lista de mociones
+                addMessage("Aviso", "No es posible eliminar el registro, pues existen mociones de este tipo.");
+            }else{
+                //Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
+                tipoMocionService.deleteTipoMocion(id);
+                addMessage("Aviso", "Registro eliminado correctamente.");
+                tipoMocions = tipoMocionService.getAllTipoMocion();
+            }
+        }*/
         Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
         tipoMocionService.deleteTipoMocion(id);
         addMessage("Aviso", "Registro eliminado correctamente.");

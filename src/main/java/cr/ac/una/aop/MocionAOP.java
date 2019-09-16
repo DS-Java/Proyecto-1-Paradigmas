@@ -12,9 +12,6 @@ public class MocionAOP {
     @Autowired
     AuditoriaService auditoriaService;
 
-    ///PRUEBA DIEGOOOOOOOOOOOO
-
-
     //ASPECTO DESPUES DE CREAR
     @After("execution(* cr.ac.una.services.MocionService.createMocion(..))")
     public void auditoriaDespuesAgregarPersonas(JoinPoint joinPoint){//Funcion para loguear antes de algo
@@ -25,7 +22,6 @@ public class MocionAOP {
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE AGREGAR");
-        System.out.println("diegoooo");
     }
 
     //ASPECTO DESPUES DE LISTAR
@@ -60,10 +56,6 @@ public class MocionAOP {
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE ACTUALIZAR");
-        System.out.println("diegooo");
     }
-
-
-    ///PRUEBA DIEGOOOOOOOOOOOO
 
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+    <h1>Crear Persona Moción</h1>
+
+    <h:form>
+        <p:growl id="msgs" showDetail="true"/>
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel value="Id:" indicateRequired="true" for="ID_PERSONA_MOCION"/>
+            <p:inputText id="ID_PERSONA_MOCION" required="true" requiredMessage="Ingrese un id" value="#{personaMocionBean.personaMocion.ID_PERSONA_MOCION}"/>
+            <p:outputLabel  value="Persona:" />
+            <p:selectOneMenu value="#{personaMocionBean.personaMocion.persona}" converter="personaConverter">
+                <f:selectItems value="#{personaBean.personas}" var="persona"
+                               itemValue="#{persona}"
+                               itemLabel="#{persona.nombre}"/>
+            </p:selectOneMenu>
+            <p:outputLabel  value="Mocion:" />
+            <p:selectOneMenu value="#{personaMocionBean.personaMocion.mocion}" converter="mocionConverter">
+                <f:selectItems value="#{mocionBean.mociones}" var="mocion"
+                               itemValue="#{mocion}"
+                               itemLabel="#{mocion.texto}"/>
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <p:commandButton value="Guardar" id="ajax" update="msgs" action="#{personaMocionBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <p:linkButton outcome="personaMocionList" value="Lista Persona Mociones" style="margin-right:20px;"/>
+    </h:form>
+</h:body>
+</html>

@@ -38,7 +38,6 @@ public class PersonaBean {
     public String init() {
         personas = personaService.getAllPersonas();
         return "personaList.xhtml";
-
     }
 
     public Persona getPersona() {
@@ -55,6 +54,19 @@ public class PersonaBean {
 
     public void setPersonas(List<Persona> personas) {
         this.personas = personas;
+    }
+
+    public Persona obtienePersona(Integer id)
+    {
+        if(id == null){
+            throw new IllegalArgumentException("no se provee el id");
+        }
+        for (Persona p : personas){
+            if(id.equals(p.getID_PERSONA())){
+                return p;
+            }
+        }
+        return null;
     }
 
     public void create() {

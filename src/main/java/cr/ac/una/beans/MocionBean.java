@@ -50,6 +50,20 @@ public class MocionBean {
     public void setTipoMocion(TipoMocion tipoMocion) {
         this.tipoMocion = tipoMocion; }
 
+
+    public Mocion obtieneMocion(Integer id)
+    {
+        if(id == null){
+            throw new IllegalArgumentException("no se provee el id");
+        }
+        for (Mocion m : mociones){
+            if(id.equals(m.getID_MOCION())){
+                return m;
+            }
+        }
+        return null;
+    }
+
     public void create() {
         try{
             mocionService.createMocion(mocion);

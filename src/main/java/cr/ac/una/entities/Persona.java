@@ -2,6 +2,7 @@ package cr.ac.una.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 
@@ -15,6 +16,8 @@ public class Persona implements Serializable {
     private String correo;
     private String telefono;
     private String CENTRO_TRABAJO;
+    @OneToMany(mappedBy = "persona")//Objeto de conexion a PersonaMocion
+    private Set<PersonaMocion> personaMocions;
 
     public Persona() {
     }
@@ -58,6 +61,10 @@ public class Persona implements Serializable {
     public void setCENTRO_TRABAJO(String CENTRO_TRABAJO) {
         this.CENTRO_TRABAJO = CENTRO_TRABAJO;
     }
+
+    public Set<PersonaMocion> getPersonaMocions() { return personaMocions; }
+
+    public void setPersonaMocions(Set<PersonaMocion> personaMocions) { this.personaMocions = personaMocions; }
 
     @Override
     public String toString() {
