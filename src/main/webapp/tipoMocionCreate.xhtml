@@ -10,7 +10,8 @@
 <h:head>
 </h:head>
 <h:body>
-    <h1>Crear Tipo de Mocion </h1>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <h1 class="principal">Crear Tipo de Mocion </h1>
 
     <h:form>
         <p:growl id="msgs" showDetail="true" rendered="#{not facesContext.validationFailed}"/>
@@ -21,6 +22,7 @@
         </h:panelGrid>
         <p:commandButton value="Guardar" id="ajax" update="msgs,panel" action="#{tipoMocionBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
         <p:linkButton outcome="tipoMocionList" value="Lista de tipo de Mociones" style="margin-right:20px;"/>
+        <p:linkButton outcome="index" value="Menu Principal" style="margin-right:20px;"/>
     </h:form>
 </h:body>
 </html>

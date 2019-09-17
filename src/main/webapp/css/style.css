@@ -1,0 +1,18 @@
+h1.principal{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size:23px;
+    color: #CD5C5C;
+}
+h1.titulo{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size:23px;
+    color: #008B8B;
+}
+
+.ui-autocomplete-dropdown{
+    ont-family: Tahoma, Geneva, sans-serif;
+    font-size:18px;
+}
+.ui-autocomplete-dropdown:hover{
+    background-color:#008B8B;
+}
