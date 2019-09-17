@@ -63,6 +63,7 @@
 
         <bean id="tipoMocionAOP" class="cr.ac.una.aop.TipoMocionAOP"/>
         <bean id="mocionAOP" class="cr.ac.una.aop.MocionAOP"/>
+        <bean id="personaMocionAOP" class="cr.ac.una.aop.PersonaMocionAOP"/>
 
 
     </beans>

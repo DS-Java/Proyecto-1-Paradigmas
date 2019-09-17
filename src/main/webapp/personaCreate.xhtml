@@ -13,25 +13,29 @@
     <h1>Crear Persona</h1>
 
     <h:form>
-        <p:growl id="msgs" showDetail="true"/>
-        <h:panelGrid columns="2" cellpadding="5">
+        <p:growl id="msgs" showDetail="true" rendered="#{not facesContext.validationFailed}"/>
+        <h:panelGrid columns="3" cellpadding="5" id="panel">
             <p:outputLabel value="Nombre:" indicateRequired="true" for="nombre"/>
             <p:inputText id="nombre" required="true" requiredMessage="Ingrese un nombre" value="#{personaBean.persona.nombre}"></p:inputText>
+            <p:message for="nombre"/>
             <p:outputLabel value="Correo:" indicateRequired="true" />
             <p:inputText id="email" required="true"  label="email" requiredMessage="Correo requerido."
                          validatorMessage="Formato invalido" value="#{personaBean.persona.correo}">
                 <f:validateRegex
                         pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
             </p:inputText>
+            <p:message for="email"/>
             <p:outputLabel value="Telefono:" indicateRequired="true" for="telefono"/>
             <p:inputText id="telefono" required="true" requiredMessage="Ingrese un telefono"
                          validatorMessage="Ingrese SOLO números" value="#{personaBean.persona.telefono}">
                 <f:validateRegex pattern="[0-9]{8}"/>
             </p:inputText>
+            <p:message for="telefono"/>
             <p:outputLabel value="Centro de Trabajo:" indicateRequired="true" for="centroTrabajo"/>
             <p:inputText id="centroTrabajo" required="true"  requiredMessage="Ingrese un centro de trabajo" validatorMessage="Debe ingresar un centro de trabajo" value="#{personaBean.persona.CENTRO_TRABAJO}"/>
+            <p:message for="centroTrabajo"/>
         </h:panelGrid>
-        <p:commandButton value="Guardar" id="ajax" update="msgs" action="#{personaBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <p:commandButton value="Guardar" id="ajax" update="msgs,panel" action="#{personaBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
         <p:linkButton outcome="personaList" value="Lista de personas" style="margin-right:20px;"/>
     </h:form>
 </h:body>
