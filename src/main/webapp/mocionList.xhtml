@@ -46,7 +46,7 @@
                     <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
                 </p:confirmDialog>
 
-                <p:commandButton icon="fa fa-fw fa-remove" value="Modificar" id="modificar" update="tablaMocion" action="#{mocionBean.carga}">
+                <p:commandButton icon="fa fa-fw fa-edit" value="Modificar" id="modificar" update="tablaMocion" action="#{mocionBean.carga}">
                     <f:param name="MocionId" value="#{mocion.ID_MOCION}"/><!--Aca se le pase el id para eliminar la persona-->
                 </p:commandButton>
             </p:column>

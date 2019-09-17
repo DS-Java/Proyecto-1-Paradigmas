@@ -26,8 +26,9 @@ public class TipoMocionBean {
     private List<TipoMocion> tipoMocions;
 
     @PostConstruct
-    public void init() {
+    public String init() {
         tipoMocions = tipoMocionService.getAllTipoMocion();
+        return "tipoMocionList.xhtml";
     }
 
     public TipoMocion getTipoMocion() {
@@ -69,23 +70,18 @@ public class TipoMocionBean {
     }
 
     public void delete(){
-        /*List<Mocion> mociones = mocionService.getAllMociones();//Se carga esta lista con todas la mociones que hay en la base
-        Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
-        //Se consulta el id del tipo de mocion a eliminar
-        for (Mocion m : mociones){//For que recorre toda la lista
-            if(id==(m.getTipoMocion().getID_TIPO_MOCION())){//If que valida si se encuentra el id tipo mocion en alguna mocion de la lista de mociones
-                addMessage("Aviso", "No es posible eliminar el registro, pues existen mociones de este tipo.");
-            }else{
-                //Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
-                tipoMocionService.deleteTipoMocion(id);
-                addMessage("Aviso", "Registro eliminado correctamente.");
-                tipoMocions = tipoMocionService.getAllTipoMocion();
-            }
-        }*/
         Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
         tipoMocionService.deleteTipoMocion(id);
         addMessage("Aviso", "Registro eliminado correctamente.");
         tipoMocions = tipoMocionService.getAllTipoMocion();
+        /*try{
+        Integer id = new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("TipoMocionId"));
+        tipoMocionService.deleteTipoMocion(id);
+        addMessage("Aviso", "Registro eliminado correctamente.");
+        tipoMocions = tipoMocionService.getAllTipoMocion();
+    }catch (Exception e){
+            addMessage("Aviso", "El registro no se puede eliminar pues existen mociones de este tipo.");
+    }*/
     }
 
     public void update(){

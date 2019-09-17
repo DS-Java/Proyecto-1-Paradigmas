@@ -64,13 +64,26 @@ public class PersonaMocionBean {
     
 
     public void create() {
-        try{
-            personaMocionService.createPersonaMocion(personaMocion);
-            addMessage("Aviso", "Registro insertado correctamente.");
-            personaMociones = personaMocionService.getAllPersonaMocions();
-        }catch (Exception e){
-        } finally {
-            personaMocion = new PersonaMocion();
+        boolean existePersonaMocion = false;
+        for(PersonaMocion pm: personaMociones){
+            if(personaMocion.getID_PERSONA_MOCION() == pm.getID_PERSONA_MOCION()){
+                existePersonaMocion = true;
+                break;
+            }else{
+                existePersonaMocion = false;
+            }
+        }
+        if(existePersonaMocion == false){
+            try{
+                personaMocionService.createPersonaMocion(personaMocion);
+                addMessage("Aviso", "Registro insertado correctamente.");
+                personaMociones = personaMocionService.getAllPersonaMocions();
+            }catch (Exception e){
+            } finally {
+                personaMocion = new PersonaMocion();
+            }
+        }else if(existePersonaMocion == true) {
+            addMessage("Aviso", "Ya existe un registro con ese id pruebe nuevamente.");
         }
     }
 

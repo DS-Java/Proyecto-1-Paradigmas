@@ -16,22 +16,29 @@
     <h:form>
         <p:growl id="msgs" showDetail="true" rendered="#{not facesContext.validationFailed}"/>
         <h:panelGrid columns="3" cellpadding="5" id="panel">
+
             <p:outputLabel value="Nombre:" indicateRequired="true" for="nombre"/>
-            <p:inputText id="nombre" required="true" requiredMessage="Ingrese un nombre" value="#{personaBean.persona.nombre}"/>
+            <p:inputText id="nombre" required="true" requiredMessage="Ingrese un nombre"
+                         validatorMessage="Debe ingresar el nombre completo" value="#{personaBean.persona.nombre}">
+            <f:validateLength minimum="3" />
+            </p:inputText>
             <p:message for="nombre"/>
+
             <p:outputLabel value="Correo:" indicateRequired="true" />
             <p:inputText id="email" required="true"  label="email" requiredMessage="Correo requerido."
-                         validatorMessage="Formato invalido" value="#{personaBean.persona.correo}">
+                         validatorMessage="Formato invalido, debe ser como el siguiente: ejemplo@gmail.com" value="#{personaBean.persona.correo}">
                 <f:validateRegex
                         pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
             </p:inputText>
             <p:message for="email"/>
+
             <p:outputLabel  indicateRequired="true" value="Telefono:" for="telefono"/>
             <p:inputText id="telefono" required="true" requiredMessage="Ingrese un telefono"
-                         validatorMessage="Ingrese SOLO números" value="#{personaBean.persona.telefono}">
+                         validatorMessage="Debe ingresar 8 caracteres numericos" value="#{personaBean.persona.telefono}">
                 <f:validateRegex pattern="[0-9]{8}"/>
             </p:inputText>
             <p:message for="telefono"/>
+
             <p:outputLabel value="Centro de Trabajo:" indicateRequired="true" for="centroTrabajo"/>
             <p:inputText id="centroTrabajo" required="true"  requiredMessage="Ingrese un centro de trabajo" validatorMessage="Debe ingresar un centro de trabajo" value="#{personaBean.persona.CENTRO_TRABAJO}"/>
             <p:message for="centroTrabajo"/>

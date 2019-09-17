@@ -24,7 +24,7 @@ AuditoriaService auditoriaService;
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE AGREGAR");
     }
 
-    //ASPECTO DESPUES DE LISTAR
+    /*//ASPECTO DESPUES DE LISTAR
     @After("execution(* cr.ac.una.services.PersonaMocionService.getAllPersonaMocions(..))")
     public void auditoriaDespuesListarPersonaMocion(JoinPoint joinPoint){
         Auditoria a = new Auditoria();
@@ -33,7 +33,7 @@ AuditoriaService auditoriaService;
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE LISTAR");
-    }
+    }*/
 
     //ASPECTO DESPUES DE ELIMINAR
     @After("execution(* cr.ac.una.services.PersonaMocionService.deletePersonaMocion(..))")

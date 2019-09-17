@@ -30,20 +30,21 @@
         </p:menuButton>
 
         <p:menuButton  value="Control de Tipo Mociones">
-            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Tipo de Moción" outcome="tipoMocionList" update="messages">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Tipo de Moción" action="#{tipoMocionBean.init}" update="messages">
+                <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/>
             </p:menuitem>
             <p:menuitem styleClass="ui-autocomplete-dropdown" outcome="tipoMocionCreate" value="Crear Tipo de Mocion" update="messages">
             </p:menuitem>
-            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Eliminar Tipo Mocion" outcome="tipoMocionList" update="messages">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Eliminar Tipo Mocion" action="#{tipoMocionBean.init}" update="messages">
                 <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/>
             </p:menuitem>
-            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Actualizar Tipo Mocion" outcome="tipoMocionList" update="messages">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Actualizar Tipo Mocion" action="#{tipoMocionBean.init}" update="messages">
                 <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/>
             </p:menuitem>
         </p:menuButton>
 
 
-        <p:menuButton  value="Control de de Moción">
+        <p:menuButton  value="Control de Moción">
             <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Mociones" action="#{mocionBean.init}" update="messages">
                 <f:param name="MocionId" value="#{mocion.ID_MOCION}"/>
             </p:menuitem>

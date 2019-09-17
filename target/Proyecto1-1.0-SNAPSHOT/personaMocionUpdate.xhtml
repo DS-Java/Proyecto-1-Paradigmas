@@ -10,14 +10,15 @@
 <h:head>
 </h:head>
 <h:body>
-    <h1>Actualizar Persona Moción</h1>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <h1 class="principal">Actualizar Persona Moción</h1>
 
     <h:form>
         <p:growl id="msgs" showDetail="true" rendered="#{not facesContext.validationFailed}"/>
-        <h:panelGrid columns="3" cellpadding="5" id="panel">
+        <h:panelGrid columns="2" cellpadding="5" id="panel">
             <p:outputLabel  value="Id:"  for="ID_PERSONA_MOCION"/>
             <p:inputText id="ID_PERSONA_MOCION" disabled="true" value="#{personaMocionBean.personaMocion.ID_PERSONA_MOCION}"/>
-            <p:message for="ID_PERSONA_MOCION"/>
+
             <p:outputLabel  value="Persona:" />
             <p:selectOneMenu value="#{personaMocionBean.personaMocion.persona}" converter="personaConverter">
                 <f:selectItems value="#{personaBean.personas}" var="persona"

@@ -10,23 +10,74 @@
 <h:head>
 </h:head>
 <h:body>
-<h1>Sistema de control de mociones</h1>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+<h1 class="titulo">Sistema de Control de Mociones</h1>
     <h:form>
-        <h:panelGrid columns="1" cellpadding="5">
-            <p:commandButton value="Control de personas" id="refrescarP" action="#{personaBean.init}">
-                <f:param name="PersonaId" value="#{persona.id}"/><!--Aca se le pase el id para eliminar la persona-->
-            </p:commandButton>
-            <p:linkButton outcome="tipoMocionList" value="Control de tipo de Moción" style="margin:auto;"/>
-            <p:commandButton value="Control de Moción" id="refrescarM" action="#{mocionBean.init}">
-                <f:param name="MocionId" value="#{mocion.ID_MOCION}"/><!--Aca se le pase el id para eliminar la persona-->
-            </p:commandButton>
-            <p:commandButton value="Control de Persona Mocion" id="refrescarPM" action="#{personaMocionBean.init}">
-                <f:param name="PersonaMocionId" value="#{personaMocion.id}"/><!--Aca se le pase el id para eliminar la persona-->
-            </p:commandButton>
-            <p:commandButton value="Auditoria de Transacciones" id="refrescarA" action="#{auditoriaBean.init}">
-                <f:param name="AuditoriaId" value="#{auditoria.id}"/><!--Aca se le pase el id para eliminar la persona-->
-            </p:commandButton>
-        </h:panelGrid>
+        <p:growl id="messages" showDetail="true"/>
+
+        <p:menuButton  value="Control de Personas">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Personas" action="#{personaBean.init}" update="messages">
+                <f:param name="PersonaId" value="#{persona.id}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Crear Personas" outcome="personaCreate" update="messages">
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Eliminar Personas" action="#{personaBean.init}" update="messages">
+                <f:param name="PersonaId" value="#{persona.id}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Actualizar Personas" action="#{personaBean.init}" update="messages">
+                <f:param name="PersonaId" value="#{persona.id}"/>
+            </p:menuitem>
+        </p:menuButton>
+
+        <p:menuButton  value="Control de Tipo Mociones">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Tipo de Moción" action="#{tipoMocionBean.init}" update="messages">
+                <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" outcome="tipoMocionCreate" value="Crear Tipo de Mocion" update="messages">
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Eliminar Tipo Mocion" action="#{tipoMocionBean.init}" update="messages">
+                <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Actualizar Tipo Mocion" action="#{tipoMocionBean.init}" update="messages">
+                <f:param name="TipoMocionId" value="#{tipoMocion.ID_TIPO_MOCION}"/>
+            </p:menuitem>
+        </p:menuButton>
+
+
+        <p:menuButton  value="Control de Moción">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Mociones" action="#{mocionBean.init}" update="messages">
+                <f:param name="MocionId" value="#{mocion.ID_MOCION}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" outcome="mocionCreate" value="Crear Mocion" update="messages">
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Eliminar Mociones" action="#{mocionBean.init}" update="messages">
+                <f:param name="MocionId" value="#{mocion.ID_MOCION}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Actualizar Personas" action="#{mocionBean.init}" update="messages">
+                <f:param name="MocionId" value="#{mocion.ID_MOCION}"/>
+            </p:menuitem>
+        </p:menuButton>
+
+        <p:menuButton  value="Control de Persona Mocion">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Personas Mocion" action="#{personaMocionBean.init}" update="messages">
+                <f:param name="PersonaMocionId" value="#{personaMocion.id}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" outcome="personaMocionCreate" value="Crear Persona Moción" update="messages">
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Eliminar Personas Mocion" action="#{personaMocionBean.init}" update="messages">
+                <f:param name="PersonaMocionId" value="#{personaMocion.id}"/>
+            </p:menuitem>
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Actualizar Personas Mocion" action="#{personaMocionBean.init}" update="messages">
+                <f:param name="PersonaMocionId" value="#{personaMocion.id}"/>
+            </p:menuitem>
+        </p:menuButton>
+        <p:menuButton  value="Auditoria de Transacciones">
+            <p:menuitem styleClass="ui-autocomplete-dropdown" value="Lista de Transacciones" action="#{auditoriaBean.init}" update="messages">
+                <f:param name="AuditoriaId" value="#{auditoria.id}"/>
+            </p:menuitem>
+        </p:menuButton>
+
+
     </h:form>
 </h:body>
 </html>

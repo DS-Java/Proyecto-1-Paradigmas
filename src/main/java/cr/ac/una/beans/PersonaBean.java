@@ -1,6 +1,8 @@
 package cr.ac.una.beans;
 
 import cr.ac.una.entities.Persona;
+import cr.ac.una.entities.PersonaMocion;
+import cr.ac.una.services.PersonaMocionService;
 import cr.ac.una.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import java.sql.SQLException;
 import java.util.List;
 /*
 import cr.ac.una.entities.Persona;
@@ -30,8 +33,10 @@ import java.util.Optional;
 public class PersonaBean {
     @Autowired
     PersonaService personaService;
-    private Persona persona = new Persona();
+    @Autowired
+    PersonaMocionService personaMocionService;
 
+    private Persona persona = new Persona();
     private List<Persona> personas;
 
     @PostConstruct
@@ -85,6 +90,23 @@ public class PersonaBean {
         personaService.deletePersona(id);
         addMessage("Aviso", "Registro eliminado correctamente.");
         personas = personaService.getAllPersonas();
+        /*List<PersonaMocion>lpm1 = personaMocionService.getAllPersonaMocions();
+        boolean tieneAsignadas = false;
+        for(PersonaMocion pm:lpm1){
+            if(id == pm.getPersona().getID_PERSONA()){
+                tieneAsignadas = true;
+                break;
+            }else {
+                tieneAsignadas = false;
+            }
+        }
+        if(tieneAsignadas == false){
+            personaService.deletePersona(id);
+            addMessage("Aviso", "Registro eliminado correctamente.");
+            personas = personaService.getAllPersonas();
+        }else if(tieneAsignadas == true){
+            addMessage("Aviso", "La Persona no se puede eliminar pues tiene mociones asignadas.");
+        }*/
     }
 
     public void update(){

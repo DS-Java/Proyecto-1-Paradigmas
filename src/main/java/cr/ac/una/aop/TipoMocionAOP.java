@@ -24,7 +24,8 @@ public class TipoMocionAOP {
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE AGREGAR");
     }
-    //ASPECTO DESPUES DE LISTAR
+
+    /*//ASPECTO DESPUES DE LISTAR
     @After("execution(* cr.ac.una.services.TipoMocionService.getAllTipoMocion(..))")
     public void auditoriaDespuesListarPersonas(JoinPoint joinPoint){
         Auditoria a = new Auditoria();
@@ -33,9 +34,7 @@ public class TipoMocionAOP {
 
         auditoriaService.createAuditoria(a);
         System.out.println("SE HA REGISTRADO LA TRANSACCION DE LISTAR");
-    }
-
-
+    }*/
 
     //ASPECTO DESPUES DE ELIMINAR
     @After("execution(* cr.ac.una.services.TipoMocionService.deleteTipoMocion(..))")
