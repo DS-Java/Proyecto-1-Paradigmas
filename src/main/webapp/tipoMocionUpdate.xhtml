@@ -15,7 +15,8 @@
         <p:growl id="msgs" showDetail="true" rendered="#{not facesContext.validationFailed}"/>
         <h:panelGrid columns="3" cellpadding="5" id="panel">
             <p:outputLabel indicateRequired="true" value="Descripcion:" for="descripcion"/>
-            <p:inputText id="descripcion" required="true" requiredMessage="Ingrese una descripcion del tipo mocion" value="#{tipoMocionBean.tipoMocion.descripcion}"/>
+            <p:inputText id="descripcion" required="true" requiredMessage="Ingrese una descripcion del tipo mocion"
+                         pattern="[A-Za-Z]"  validatorMessage="Debe ingresar una descripción! No se permite números!" value="#{tipoMocionBean.tipoMocion.descripcion}"/>
             <p:message for="descripcion"/>
         </h:panelGrid>
         <p:commandButton value="Actualizar" id="ajax" update="msgs,panel" action="#{tipoMocionBean.update}" style="margin-right:20px;" styleClass="ui-priority-primary">

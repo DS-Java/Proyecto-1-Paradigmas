@@ -18,8 +18,8 @@
         <h:panelGrid columns="3" cellpadding="5" id="panel">
 
             <p:outputLabel value="Nombre:" indicateRequired="true" for="nombre"/>
-            <p:inputText id="nombre" required="true" requiredMessage="Ingrese un nombre"
-                         validatorMessage="Debe ingresar el nombre completo" value="#{personaBean.persona.nombre}">
+            <p:inputText id="nombre" required="true" requiredMessage="Ingrese un nombre"  pattern="[A-Za-Z]"
+                         validatorMessage="Debe ingresar el nombre completo! No se permite números!" value="#{personaBean.persona.nombre}">
                 <f:validateLength minimum="3" />
             </p:inputText>
             <p:message for="nombre"/>
@@ -33,7 +33,7 @@
 
             <p:outputLabel value="Telefono:" indicateRequired="true" for="telefono"/>
             <p:inputText id="telefono" required="true" requiredMessage="Ingrese un telefono"
-                         validatorMessage="Debe ingresar 8 caracteres numericos" value="#{personaBean.persona.telefono}">
+                         validatorMessage="Debe ingresar 8 caracteres numericos! No se permiten letras!" value="#{personaBean.persona.telefono}">
                 <f:validateRegex pattern="[0-9]{8}"/>
             </p:inputText>
             <p:message for="telefono"/>
