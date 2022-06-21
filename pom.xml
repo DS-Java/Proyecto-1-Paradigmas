@@ -153,7 +153,7 @@
     <dependency>
         <groupId>mysql</groupId><!--En este ejemplo se va usar la base de datos h2-->
         <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.17</version>
+        <version>8.0.28</version>
     </dependency>
 
     <dependency>
